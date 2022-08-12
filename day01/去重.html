@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 使用set对数组去重
+    var arr = [1, 1, 2, 2, 3, 6, 5, 3, 3, 4, 2, 1]
+    let num = [...new Set(arr)]
+    console.log(num);
+
+
+    var arr = [1, 1, 2, 2, 3, 6, 5, 3, 3, 4, 2, 1]
+    //使用双重for循环加splice
+    function Arr1(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[i] === arr[j]) {
+                    arr.splice(j, 1);
+                    j--
+                }
+            };
+        }
+        return arr
+    }
+    console.log(Arr1(arr));
+
+    var arr = [1, 1, 2, 2, 3, 6, 5, 3, 3, 4, 2, 1]
+    function Arr2(arr) {
+        return arr.filter((item, index) => {
+            return arr.indexOf(item) === index
+        })
+    }
+    console.log(Arr2(arr));
+
+</script>
+
+</html>
