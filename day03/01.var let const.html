@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>var let const 的区别</title>
+</head>
+
+<body>
+
+    <script>
+        //变量提升
+        // var 具有变量提升 会将变量提升到他所在作用域的顶层
+        console.log(a);
+        var a; //声明a
+        a = 20 //赋值
+
+
+        // let 不具备变量提升  但是会报错
+        // console.log(b);
+        let b
+        b = 20
+
+        //块级作用域
+        var c = 10  //全局作用域
+        function fn() {  //函数作用域
+            var b = 2
+
+        }
+        console.log(b);
+        for (var index = 0; index < 10; index++) {  //使用 let 会报错
+        }
+        console.log(index);
+        //暂时性死区  使用参数a等于 let a ，重新定义了a变量
+        function name() {
+            console.log(a);
+            var a = 10
+            console.log(1);
+        }
+        name()
+        let v = 100  //使用let 就不再全局作用域上了
+        // var v = 100 
+        console.log(window);
+        console.log(window.v);
+
+        // const 生明的是常量 
+        // 基本数据类型的值不能变
+        // 引用数据类型的地址不能变
+    </script>
+</body>
+
+</html>
