@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax</title>
+</head>
+
+<body>
+    <script>
+        function ajax(type, url, success) {
+            var xhr = new XMLHttpRequest();
+            xhr.open(type, url, true);    //type 请求方式  url 请求路径  true 异步 false 同步
+
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {   //readyState  准备状态    status 后台返回 的状态
+
+
+                    success(xhr.responseText)
+                }
+            }
+        }
+        ajax("GEt", "./data.json", function (res) {
+            console.log(res);
+        })
+    </script>
+</body>
+
+</html>
