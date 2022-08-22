@@ -3,7 +3,7 @@
   <div class="about">
     <div class="goods_list">
       <div class="goods-item" v-for="(item, index) in list" :key="index">
-        <img :src="item.pic" alt="" />
+        <img :src="item.pic" alt="" @click="gotoItem(item.id)" />
         <p>{{ item.name }}</p>
         <p>{{ item.minPrice }}</p>
       </div>
@@ -22,7 +22,14 @@ export default {
   },
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    gotoItem(id) {
+      console.log(1);
+      this.$router.push(
+      
+      )
+    },
+  },
 };
 </script>
 <style scoped lang='scss'>
