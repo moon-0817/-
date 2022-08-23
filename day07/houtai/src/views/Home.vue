@@ -26,6 +26,7 @@
               background-color="#545c64"
               text-color="#fff"
               active-text-color="#ffd04b"
+              :collapse-transition="false"
             >
               <el-submenu
                 :index="item.id + ''"
@@ -69,7 +70,7 @@ export default {
   components: {},
   data() {
     return {
-      loginToken: localStorage.getItem("loginToken"), //token
+      loginToken: localStorage.getItem("houtaiusername"), //token
       menusList: [],
       isCollapse: false,
     };
@@ -83,7 +84,9 @@ export default {
   },
   methods: {
     out() {
-      localStorage.removeItem("loginToken");
+      // localStorage.removeItem("loginToken");
+      this.$store.commit("user/DEL_TOKEN");
+      this.$store.commit("user/DEL_USERNAME");
       this.$router.push("/login");
     },
   },

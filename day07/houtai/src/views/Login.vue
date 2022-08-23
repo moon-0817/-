@@ -7,21 +7,23 @@
         <img src="../assets/logo.png" alt="" />
       </div>
       <el-form
-        :model="loginForm"
+        :model="ruleForm"
         :rules="rules"
         ref="ruleForm"
         label-width="100px"
         class="demo-ruleForm"
       >
         <el-form-item label="用户名" prop="username">
-          <el-input v-model="loginForm.username"></el-input>
+          <el-input v-model="ruleForm.username"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
-          <el-input v-model="loginForm.password"></el-input>
+          <el-input v-model="ruleForm.password"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="loginFn">登录</el-button>
-          <el-button>重置</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')"
+            >登录</el-button
+          >
+          <el-button @click="resetForm('ruleForm')">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -29,15 +31,14 @@
 </template>
 
 <script>
-import { login } from "@/http/user";
 export default {
   name: "",
   components: {},
   data() {
     return {
-      loginForm: {
-        username: "",
-        password: "",
+      ruleForm: {
+        username: "admin",
+        password: "123456",
       },
       rules: {
         username: [
@@ -54,18 +55,38 @@ export default {
   created() {},
   mounted() {},
   methods: {
-    async loginFn() {
-      let { username, password } = this.loginForm;
-      let res = await login({ username, password });
-      console.log(res);
-      if (res.meta.status == 200) {
-        // 保存token
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("loginToken", username);
-        this.$router.push("/home");
-      } else {
-        alert(res.meta.msg);
-      }
+    // async loginFn() {
+    //   let { username, password } = this.loginForm;
+    //   let res = await login({ username, password });
+    //   console.log(res);
+    //   if (res.meta.status == 200) {
+    //     // 保存token
+    //     localStorage.setItem("token", res.data.token);
+    //     localStorage.setItem("loginToken", username);
+    //     this.$router.push("/home");
+    //   } else {
+    //     alert(res.meta.msg);
+    //   }
+    // },
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          // alert("submit!");
+          // console.log(this.ruleForm);
+          this.$store.dispatch("user/loginFn", this.ruleForm).then(
+            () => {
+              this.$router.push("/home");
+            },
+            () => {
+              this.ruleForm("ruleForm");
+            }
+          );
+        } else {
+          console.log("error submit!!");
+          // alert("error submit!!");
+          return false;
+        }
+      });
     },
   },
 };
@@ -79,6 +100,7 @@ export default {
   align-items: center;
   justify-content: center;
   .login_box {
+    box-shadow: 0 0 10px #ddd;
     width: 400px;
     height: 300px;
     background-color: #fff;
@@ -86,6 +108,7 @@ export default {
     // align-items: center;
     justify-content: center;
     position: relative;
+
     form {
       margin-top: 60px;
       .el-input__inner {

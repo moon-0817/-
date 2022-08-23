@@ -36,6 +36,36 @@ const routes = [
         name: 'rights',
         component: () => import('../views/roles/rights.vue'),
         meta: { list: [{ title: "权限管理", }, { title: '权限列表' }] }
+      },
+      {
+        path: '/goods',
+        name: 'goods',
+        component: () => import('../views/goods/goods.vue'),
+        meta: { list: [{ title: "商品管理", }, { title: '商品列表' }] }
+      },
+      {
+        path: '/params',
+        name: 'params',
+        component: () => import('../views/goods/params.vue'),
+        meta: { list: [{ title: "商品管理", }, { title: '分类参数' }] }
+      },
+      {
+        path: '/categories',
+        name: 'categories',
+        component: () => import('../views/goods/categories.vue'),
+        meta: { list: [{ title: "商品管理", }, { title: '商品分类' }] }
+      },
+      {
+        path: '/orders',
+        name: 'orders',
+        component: () => import('../views/orders/orders.vue'),
+        meta: { list: [{ title: "订单管理", }, { title: '订单列表' }] }
+      },
+      {
+        path: '/reports',
+        name: 'reports',
+        component: () => import('../views/reports/reports.vue'),
+        meta: { list: [{ title: "数据统计", }, { title: '数据报表' }] }
       }
 
     ]
@@ -45,12 +75,13 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+import store from '@/store/index'
 router.beforeEach((to, from, next) => {
   if (to.path == '/login') {
     next()
   }
   else {
-    if (localStorage.getItem('loginToken')) {
+    if (store.getters.gettoken) {
       next()
     } else {
       next('/login')

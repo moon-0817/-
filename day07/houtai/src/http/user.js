@@ -6,3 +6,7 @@ export const login = (obj) => axios.post("login", obj)
 export const menus = () => axios.get('menus')
 // 用户列表
 export const users = (obj) => axios.get('users', obj)
+// 添加
+export const addUser = (obj) => axios.post('users', obj)
+// 删除
+export const del = () => axios.delete(`'users/:${id}`)
