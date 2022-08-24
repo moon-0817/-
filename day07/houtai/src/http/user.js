@@ -9,4 +9,13 @@ export const users = (obj) => axios.get('users', obj)
 // 添加
 export const addUser = (obj) => axios.post('users', obj)
 // 删除
-export const del = () => axios.delete(`'users/:${id}`)
+// export const delUser = (id) => axios.delete(`users/${id}`)
+export function delUser(data) {
+    return axios({
+        url: `users/${data.id}`,
+        method: 'DELETE',
+        data,
+    })
+}
+//编辑
+export const editUser = (obj) => axios.put(`users/${obj.id}`, obj)

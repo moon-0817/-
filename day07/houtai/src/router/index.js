@@ -22,52 +22,60 @@ const routes = [
       {
         path: '/users',
         name: 'users',
-        component: () => import('../views/users/users.vue'),
+        component: () => import('../components/users/users.vue'),
         meta: { list: [{ title: "用户管理", }, { title: '用户列表' }] }
       },
       {
         path: '/roles',
         name: 'roles',
-        component: () => import('../views/roles/roles.vue'),
+        component: () => import('../components/roles/roles.vue'),
         meta: { list: [{ title: "权限管理", }, { title: '角色列表' }] }
       },
       {
         path: '/rights',
         name: 'rights',
-        component: () => import('../views/roles/rights.vue'),
+        component: () => import('../components/roles/rights.vue'),
         meta: { list: [{ title: "权限管理", }, { title: '权限列表' }] }
       },
       {
         path: '/goods',
         name: 'goods',
-        component: () => import('../views/goods/goods.vue'),
+        component: () => import('../components/goods/goods.vue'),
         meta: { list: [{ title: "商品管理", }, { title: '商品列表' }] }
       },
       {
         path: '/params',
         name: 'params',
-        component: () => import('../views/goods/params.vue'),
+        component: () => import('../components/goods/params.vue'),
         meta: { list: [{ title: "商品管理", }, { title: '分类参数' }] }
       },
       {
         path: '/categories',
         name: 'categories',
-        component: () => import('../views/goods/categories.vue'),
+        component: () => import('../components/goods/categories.vue'),
         meta: { list: [{ title: "商品管理", }, { title: '商品分类' }] }
       },
       {
         path: '/orders',
         name: 'orders',
-        component: () => import('../views/orders/orders.vue'),
+        component: () => import('../components/orders/orders.vue'),
         meta: { list: [{ title: "订单管理", }, { title: '订单列表' }] }
       },
       {
         path: '/reports',
         name: 'reports',
-        component: () => import('../views/reports/reports.vue'),
+        component: () => import('../components/reports/reports.vue'),
         meta: { list: [{ title: "数据统计", }, { title: '数据报表' }] }
-      }
-
+      },
+      {
+        path: '/welcome',
+        name: 'welcome',
+        component: () => import('../components/welcome.vue'),
+      },
+      {
+        path: '/',
+        redirect: '/welcome'
+      },
     ]
   }
 ]

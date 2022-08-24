@@ -4,7 +4,17 @@
     <!-- 头部 -->
     <div class="box">
       <div class="top">
-        <el-input></el-input>
+        <el-input
+          placeholder="请输入内容"
+          v-model="query"
+          class="input-with-select"
+        >
+          <el-button
+            slot="append"
+            icon="el-icon-search"
+            @click="searchBtn"
+          ></el-button>
+        </el-input>
         <el-button type="primary" @click="dialogVisible = true"
           >添加用户</el-button
         >
@@ -15,7 +25,9 @@
           <el-table-column type="index" label="#"> </el-table-column>
           <el-table-column prop="username" label="姓名"> </el-table-column>
           <el-table-column prop="email" label="邮箱"> </el-table-column>
-          <el-table-column prop="mobile" label="电话"> </el-table-column>
+          <el-table-column prop="mobile" label="电话"> </el-table-column
+          ><el-table-column prop="role_name" label="角色"> </el-table-column>
+
           <el-table-column prop="mg_state" label="状态">
             <template slot-scope="scope">
               <el-switch
@@ -32,14 +44,20 @@
                 type="primary"
                 icon="el-icon-edit"
                 circle
-                @click="handleClick(scope.row)"
+                @click="editBtn(scope.row)"
               ></el-button>
               <el-button
                 type="warning"
                 icon="el-icon-setting"
                 circle
+                @click="distribution(scope.row)"
               ></el-button>
-              <el-button type="danger" icon="el-icon-delete" circle></el-button>
+              <el-button
+                type="danger"
+                icon="el-icon-delete"
+                circle
+                @click="del(scope.row)"
+              ></el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -56,7 +74,7 @@
         :total="total"
       >
       </el-pagination>
-      <!-- 弹出框 -->
+      <!-- 添加的弹出框 -->
       <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
         <!-- <span>这是一段信息</span> -->
         <el-form ref="form" :model="form" :rules="rules" label-width="80px">
@@ -78,13 +96,33 @@
           <el-button type="primary" @click="add">确 定</el-button>
         </span>
       </el-dialog>
+      <!-- 编辑的模态框 -->
+      <el-dialog title="提示" :visible.sync="editFlag" width="30%">
+        <!-- <span>这是一段信息</span> -->
+        <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+          <el-form-item label="用户名" prop="">
+            <el-input v-model="editForm.username" disabled></el-input>
+          </el-form-item>
+
+          <el-form-item label="邮箱">
+            <el-input v-model="editForm.email"></el-input>
+          </el-form-item>
+          <el-form-item label="电话">
+            <el-input v-model="editForm.mobile"></el-input>
+          </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="editFlag = false">取 消</el-button>
+          <el-button type="primary" @click="editAdd">确 定</el-button>
+        </span>
+      </el-dialog>
     </div>
   </div>
 </template>
 
 <script>
-import { users } from "@/http/user";
-import { addUser } from "@/http/user";
+import { users, addUser, delUser, editUser } from "@/http/user";
+
 export default {
   name: "",
   components: {},
@@ -96,7 +134,8 @@ export default {
       total: 0,
       tableData: [],
       currentPage4: 1,
-      dialogVisible: false, //弹出框的状态
+      dialogVisible: false, //添加的弹出框的状态
+      editFlag: false, //编辑的弹出框的状态
       form: {
         // 弹出框的表单
         username: "",
@@ -104,6 +143,16 @@ export default {
         email: "",
         mobile: "",
       },
+      // 编辑的表单
+      editForm: {
+        username: "",
+        email: "",
+        mobile: "",
+        id: 0,
+      },
+      // 搜索框
+      searchVal: "",
+      // 编辑ID
       rules: {
         username: [
           { required: true, message: "请输入用户名", trigger: "blur" },
@@ -127,7 +176,7 @@ export default {
           pagesize: this.pagesize,
         },
       });
-      console.log(res);
+      // console.log(res);
       this.tableData = res.data.users;
       this.total = res.data.total;
     },
@@ -135,12 +184,56 @@ export default {
     add() {
       this.addUser();
       this.dialogVisible = false;
-      this.getUsers();
+      this.form = {};
     },
+    // 添加
     async addUser() {
       let { username, password, email, mobile } = this.form;
       let res = await addUser({ username, password, email, mobile });
       console.log(res);
+      this.getUsers();
+    },
+    // 删除
+    del(row) {
+      // console.log(row);
+      this.delUser(row.id);
+    },
+    // 删除
+    async delUser(id) {
+      let res = await delUser({ id });
+      console.log(res);
+      // console.log(id);
+      this.getUsers();
+    },
+    // 搜索
+    searchBtn() {
+      this.pagenum = 1;
+      this.getUsers();
+    },
+    // 修改  回填
+    editBtn(val) {
+      console.log(val);
+      this.editForm.id = val.id;
+      this.editFlag = true;
+      this.editForm.username = val.username;
+      this.editForm.email = val.email;
+      this.editForm.mobile = val.mobile;
+    },
+    // 编辑
+    editAdd(row) {
+      console.log(row);
+      this.editUser();
+      this.editFlag = false;
+    },
+    async editUser() {
+      console.log(this.editForm);
+      let res = await editUser(this.editForm);
+      console.log(res);
+      this.getUsers();
+    },
+    // 分配权限
+    distribution(val) {
+      console.log(val);
     },
     // 分页
     handleSizeChange(val) {

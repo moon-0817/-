@@ -12,7 +12,7 @@
         </div>
       </el-header>
       <el-container>
-        <el-aside width="200px">
+        <el-aside :width="isCollapse ? '60px' : '200px'">
           <el-col>
             <i
               class="el-icon-s-operation"
@@ -21,9 +21,9 @@
             <el-menu
               router
               :collapse="isCollapse"
-              default-active="1"
+              :default-active="$route.path.slice(1)"
               class="el-menu-vertical-demo"
-              background-color="#545c64"
+              background-color="#333744"
               text-color="#fff"
               active-text-color="#ffd04b"
               :collapse-transition="false"
@@ -100,6 +100,7 @@ export default {
     display: flex;
     align-items: center;
     color: #fff;
+    height: 60px;
     justify-content: space-between;
     .right {
       display: flex;
@@ -113,13 +114,10 @@ export default {
   }
 
   .el-aside {
-    background-color: #d3dce6;
-    color: #333;
-    height: 90vh;
+    background-color: #333744;
+    color: #fff;
+    height: calc(100vh - 60px);
     text-align: center;
-    .el-menu {
-      height: 87vh;
-    }
   }
 
   .el-main {
