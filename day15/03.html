@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .ggl {
+            width: 280px;
+            height: 100px;
+            border: 1px solid black;
+            position: relative;
+            margin: 20px;
+        }
+
+        #jiang {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            color: red;
+
+        }
+
+        #canvas {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ggl">
+        <p id="jiang">谢谢惠顾</p>
+        <canvas id="canvas" width="280" height="100"></canvas>
+
+    </div>
+
+    <script>
+        var jiang = document.getElementById("jiang");
+
+        var jiangxiang = ['100元', '200元', '300元', '谢谢惠顾', '谢谢惠顾', '谢谢惠顾', '谢谢惠顾', '谢谢惠顾', '谢谢惠顾'];
+
+        // var num = Math.floor( Math.random()*(最大值-最小值+1)+最小值 )
+
+        var num = Math.floor(Math.random() * (jiangxiang.length - 1 - 0 + 1) + 0)
+        jiang.innerHTML = jiangxiang[num]
+
+
+        var canvas = document.getElementById("canvas");
+        // canvas.style.border="1px solid red";
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#999d9c"
+        ctx.fillRect(0, 0, 280, 100);
+        // ctx.clearRect(0,0,20,10)
+        canvas.onmousedown = function () {
+            canvas.onmousemove = function (e) {
+                // console.log("1111")
+                ctx.clearRect(e.offsetX, e.offsetY, 10, 10)
+            }
+        }
+
+        canvas.onmouseup = function () {
+            canvas.onmousemove = null
+        }
+
+    </script>
+</body>
+
+</html>
