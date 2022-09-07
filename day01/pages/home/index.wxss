@@ -1,0 +1,66 @@
+.home {
+  width: 100%;
+  height: 100%;
+}
+
+.home .top {
+  width: 100%;
+  height: 60px;
+  background-color: red;
+}
+
+.home .top .inp {
+  width: 80%;
+  height: 70%;
+  border-radius: 25px;
+  margin-left: 10px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.home .swiper {
+  width: 100%;
+}
+
+.home .swiper .swiper_item .img {
+  width: 100%;
+}
+
+.home .nav {
+  padding: 3px;
+  width: 100%;
+  display: flex;
+}
+
+.home .nav .nav_item .img {
+  width: 90px;
+  height: 100px;
+}
+
+.home .floordata {
+  width: 100%;
+}
+
+.home .floordata .floor_title {
+  width: 100%;
+}
+
+.home .floordata .floor_title .img {
+  width: 500px;
+  height: 50px;
+}
+
+.home .floordata .floor_title .product_list {
+  width: 100%;
+}
+
+.home .floordata .floor_title .product_list .image {
+  float: left;
+  margin: 5px;
+  width: 110px;
+  height: 100px;
+}
+
+.home .floordata .floor_title .product_list image:nth-child(1) {
+  height: 200px;
+}

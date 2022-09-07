@@ -1,0 +1,28 @@
+<view class="home">
+  <!-- 头部 -->
+  <view class="top">
+    <input type="text" class="inp" placeholder="搜索" />
+  </view>
+  <!-- 轮播图 -->
+  <swiper indicator-dots="true" autoplay="true" class="swiper">
+    <swiper-item wx:for="{{swiperdata}}" wx:key="index" class="swiper_item">
+      <image mode="widthFix" src="{{item.image_src}}" alt="" class="img" />
+    </swiper-item>
+  </swiper>
+  <!-- 导航 -->
+  <view class="nav">
+    <view class="nav_item" wx:for="{{catitems}}" wx:key="index">
+      <image src="{{item.image_src}}" class="img"></image>
+    </view>
+  </view>
+  <!-- 楼层 -->
+  <view class="floordata" wx:for="{{floordata}}" wx:key="index">
+    <view class="floor_title">
+      <image src="{{item.floor_title.image_src}}" class="img"></image>
+      <view class="product_list">
+      <image  wx:for="{{item.product_list}}" wx:key="index" src="{{item.image_src}}" class="image"></image>
+    </view>
+    </view>
+   
+  </view>
+</view>

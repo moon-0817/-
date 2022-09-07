@@ -1,0 +1,16 @@
+<view class="class">
+  <!-- 头部 -->
+  <view class="top">
+    <input type="text" class="inp" placeholder="搜索" />
+  </view>
+  <view class="box">
+    <view class="box_left">
+      <scroll-view scroll-y class="scroll">
+        <view wx:for="{{boxLeft}}" wx:key="index" class="scroll_text" data-index="{{index}}" class="{{index==leftIndex?'active':''}}" bindtap="setIndex">
+          {{item.cat_name}}
+        </view>
+      </scroll-view>
+    </view>
+    <view class="box_right"></view>
+  </view>
+</view>

@@ -1,0 +1,51 @@
+.class {
+  width: 100%;
+  height: 100%;
+
+  // 头部
+  .top {
+    width: 100%;
+    height: 60px;
+    background-color: red;
+
+    .inp {
+      width: 80%;
+      height: 70%;
+      border-radius: 25px;
+      margin-left: 10px;
+      background-color: #fff;
+      text-align: center;
+    }
+  }
+
+  // 主体
+  .box {
+    width: 100%;
+    height: 900px;
+    display: flex;
+    // background-color: #000000;
+
+    .box_left {
+      width: 100px;
+      height: 600px;
+      // background-color: red;
+      text-align: center;
+      padding: 0 3px;
+      .scroll {
+        width: 100%;
+        height: 100%;
+      }
+
+      .scroll_text {
+        height: 30px;
+        border-bottom: 1px solid #cccccc;
+        margin: 5px 0;
+      }
+      .active{
+        border-left: 3px solid red;
+        font-size: 20px;
+        color: red;
+      }
+    }
+  }
+}

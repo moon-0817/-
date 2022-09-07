@@ -1,0 +1,75 @@
+.home {
+  width: 100%;
+  height: 100%;
+
+  // 头部
+  .top {
+    width: 100%;
+    height: 60px;
+    background-color: red;
+
+    .inp {
+      width: 80%;
+      height: 70%;
+      border-radius: 25px;
+      margin-left: 10px;
+      background-color: #fff;
+      text-align: center;
+    }
+  }
+
+  // 轮播图
+  .swiper {
+    width: 100%;
+
+    .swiper_item {
+      .img {
+        width: 100%;
+      }
+    }
+  }
+
+  // 导航
+  .nav {
+    padding: 3px;
+    width: 100%;
+    display: flex;
+
+    .nav_item {
+      .img {
+        width: 90px;
+        height: 100px;
+      }
+    }
+  }
+
+  // 楼层
+  .floordata {
+    width: 100%;
+
+    .floor_title {
+      width: 100%;
+
+      .img {
+        width: 500px;
+        height: 50px;
+      }
+
+      .product_list {
+        width: 100%;
+
+        .image {
+          float: left;
+          margin: 5px;
+          width: 110px;
+          height: 100px;
+        }
+      }
+
+      .product_list image:nth-child(1) {
+        height: 200px;
+      }
+    }
+
+  }
+}

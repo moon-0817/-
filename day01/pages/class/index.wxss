@@ -1,0 +1,49 @@
+.class {
+  width: 100%;
+  height: 100%;
+}
+
+.class .top {
+  width: 100%;
+  height: 60px;
+  background-color: red;
+}
+
+.class .top .inp {
+  width: 80%;
+  height: 70%;
+  border-radius: 25px;
+  margin-left: 10px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.class .box {
+  width: 100%;
+  height: 900px;
+  display: flex;
+}
+
+.class .box .box_left {
+  width: 100px;
+  height: 600px;
+  text-align: center;
+  padding: 0 3px;
+}
+
+.class .box .box_left .scroll {
+  width: 100%;
+  height: 100%;
+}
+
+.class .box .box_left .scroll_text {
+  height: 30px;
+  border-bottom: 1px solid #cccccc;
+  margin: 5px 0;
+}
+
+.class .box .box_left .active {
+  border-left: 3px solid red;
+  font-size: 20px;
+  color: red;
+}
