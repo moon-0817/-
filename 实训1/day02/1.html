@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day01</title>
+</head>
+
+<body>
+    1:查看分支
+    git branch 查看本地分支
+    git branch -r 查看远程分支
+    git branch -a 查看所有分支
+
+
+    2:创建分支
+    git branch 分支名
+
+    3:切换分支
+    git switch 分支名
+    git checkout 分支名
+
+    4:创建并切换
+    git checkout -b 分支名
+
+    5:合并分支
+    1.切换到要合并的分支
+    git switch 分支名
+    2.合并分支
+    git merge bug
+
+    6:删除本地分支
+    git branch -b 分支名
+
+
+    7:本地分支 同步到远程
+    git push origin 本地分支：远程分支名
+
+    8:删除远程分支
+    git push origin --delete 远程分支名
+
+    9:改名分支
+    git branch 旧的分支名 -m 新的分支名
+
+    10:冲突
+    1.多人同时修改一个文件，合并分支时就会出现冲突
+    1.1解决：
+    代码中冲突表示>>>>>
+    =====
+</body>
+
+</html>

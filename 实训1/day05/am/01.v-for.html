@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in arr" :key="index">
+                {{item}} --------{{index}}
+            </li>
+        </ul>
+
+        <div>
+            <button v-for="(a,b) in num" :key="b">第{{a}} - {{b}}页面</button>
+        </div>
+
+        <p>
+            <span v-for="(c,d) in str" :key="d">{{c}} -- {{d}}</span>
+        </p>
+        <ul>
+            <li v-for="(ele,ind) in nav" :key="ele.id">
+                <span>{{ele.title}}</span>
+                <ul>
+                    <li v-for="(v,i) in ele.children" :key="i.id">
+                        {{v.title}}
+                    </li>
+                </ul>
+            </li>
+            
+        </ul>
+
+    </div>
+
+    <script>
+        // Vue.config.productionTip = false
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    arr: [11, 55, 88, 99, 66, 77],
+                    num: 6,
+                    str: '你好世界',
+                    nav: [
+                        {
+                            "id": 11,
+                            "title": "电脑",
+                            "children": [
+                                { "id": 011, "title": "苹果" },
+                                { "id": 012, "title": "联想" },
+                                { "id": 013, "title": "戴尔" },
+                            ]
+                        },
+                        {
+                            "id": 22,
+                            "title": "手机",
+                            "children": [
+                                { "id": 022, "title": "oppo" },
+                                { "id": 023, "title": "华为" },
+                                { "id": 024, "title": "苹果" },
+                            ]
+                        }
+                    ]
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

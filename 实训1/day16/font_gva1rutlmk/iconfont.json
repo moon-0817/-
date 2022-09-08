@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "30585041",
+      "name": "交换  反向",
+      "font_class": "a-jiaohuanfanxiang",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "31429547",
+      "name": "存钱罐-01",
+      "font_class": "cunqianguan-01",
+      "unicode": "e7ca",
+      "unicode_decimal": 59338
+    }
+  ]
+}

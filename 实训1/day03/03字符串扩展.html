@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串扩展</title>
+</head>
+
+<body>
+    <script>
+        var n1 = "月亮"
+        var n2 = "打烊了"
+        var str = '<h1>' + n1 + n2 + '</h1>'
+        console.log(str);
+        // 字符串新方法
+        var m = "8"
+        var mm = m.padEnd(2, "*")  //字符串补全  padStart()用于头部补全，padEnd()用于尾部补全
+        console.log(mm);
+        console.log(m.padStart(2, '*'));
+
+        var d = new Date();
+        var month = (d.getMonth() + 1).toString().padStart(2, 0)
+        console.log(month, typeof month)
+    </script>
+</body>
+
+</html>

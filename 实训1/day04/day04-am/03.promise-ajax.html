@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise-ajax</title>
+</head>
+
+<body>
+    <script>
+        function ajax(type, url) {
+            let p = new Promise(function (resolve, reject) {
+
+                var xhr = new XMLHttpRequest();
+                xhr.open(type, url, true);
+                xhr.send();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        // console.log( xhr.responseText )
+
+                        resolve(xhr.responseText)
+                        // reject()
+                    }
+                }
+
+            })
+            return p;
+        }
+        ajax("GET", "./data.json")
+
+            .then(function (data) {
+                console.log(data);
+                return ajax("GET", "./data1.json")
+            })
+
+            .then(function (data) {
+                console.log(data);
+            })
+
+            .catch(function () {
+                console.log("用catch来接受失败的返回值")
+            })
+            .finally(function () {
+                console.log("不管成功还是失败都会返回")
+            })
+
+        // promise 还有提供两种方法 .all 和 .race
+
+
+        // .all 会将所有请求合并为一个请求， 会一起返回结果
+        let a = ajax("GET", "./data.json")
+        let b = ajax("GET", "./data1.json")
+        Promise.all([a, b]).then(function (b) {
+            console.log(b);
+        })
+
+        // .race 也可以将多个请求合并 ，跟.all方法不一样的是，谁先成功就返回去谁
+        romise.race([a, b])
+            .then(function (d) {
+                console.log("谁先成功", d)
+            })
+    </script>
+</body>
+
+</html>

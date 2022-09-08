@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+        .text_color {
+            color: red;
+        }
+
+        .bg_color {
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <a v-bind:href="url">百度</a>
+        <p class="text_color bg_color">文字红色</p>
+
+        <p :class="tc">文字红色</p>
+        <p :class="[tc,bc]">文字红色</p>
+        <p :class="{text_color:true,bg_color:true}">文字红色</p>
+        <p :class="{[tc]:true,[bc]:true}">文字红色</p>
+
+        <h1 style="color: red;background:#000;">sty-----hhh</h1>
+        <h1 :style="{color:'red'}">sty-----hhh</h1>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    url: "http://www.baidu.com",
+                    tc: "text_color",
+                    bc: "bg_color"
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

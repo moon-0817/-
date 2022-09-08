@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面向对象-继承</title>
+</head>
+
+<body>
+    <script>
+        // 构造函数
+        function Stu(name) {
+            this.name = name
+        }
+        Stu.prototype.say = function () {
+            console.log('假的');
+        }
+        // Man 使用Stu的属性和方法来继承
+        // 原型链继承 类式继承 组合继承 寄生继承
+        function Man(n) {
+            Stu.call(this, n) //修改this的指向  类式继承
+            this.age = 19 //多态
+        }
+        Man.prototype = Stu.prototype //原型链继承
+        let n2 = new Man("fff")
+        console.log(n2);
+    </script>
+</body>
+
+</html>
