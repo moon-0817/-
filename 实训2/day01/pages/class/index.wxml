@@ -4,6 +4,7 @@
     <input type="text" class="inp" placeholder="搜索" />
   </view>
   <view class="box">
+    <!-- 左侧 -->
     <view class="box_left">
       <scroll-view scroll-y class="scroll">
         <view wx:for="{{boxLeft}}" wx:key="index" class="scroll_text" data-index="{{index}}" class="{{index==leftIndex?'active':''}}" bindtap="setIndex">
@@ -11,6 +12,21 @@
         </view>
       </scroll-view>
     </view>
-    <view class="box_right"></view>
+    <!-- 右侧 -->
+    <view class="box_right">
+      <scroll-view scroll-y class="right_scroll">
+        <view class="title" wx:for="{{boxRight}}" wx:key="index">{{item.cat_name}}
+          <view class="box-con">
+            <view class="box_children" bindtap="go" data-cat_id="{{i.cat_id}}" wx:for="{{item.children}}" wx:key="index" wx:for-item="i">
+              <image src="{{i.cat_icon}}" class="img"></image>
+              <view>{{i.cat_name}}</view>
+            </view>
+          </view>
+
+        </view>
+      </scroll-view>
+
+
+    </view>
   </view>
 </view>

@@ -1,0 +1,17 @@
+<view class="goods">
+  <!-- 头部 -->
+  <view class="top">
+    <input type="text" class="inp" placeholder="搜索" />
+  </view>
+  <view class="box" wx:for="{{goodsList}}" wx:key="index">
+    <!-- 左侧 -->
+    <view class="box_left">
+      <image mode="widthFix" src="{{item.goods_big_logo}}" class="img"></image>
+    </view>
+    <view class="box_right">
+      <view class="name">{{item.goods_name}}</view>
+      <view class="price">￥{{item.goods_price}}</view>
+    </view>
+  </view>
+
+</view>

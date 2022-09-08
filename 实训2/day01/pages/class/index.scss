@@ -23,28 +23,57 @@
     width: 100%;
     height: 900px;
     display: flex;
-    // background-color: #000000;
 
+    // background-color: #000000;
+    // 左侧
     .box_left {
-      width: 100px;
-      height: 600px;
+
+      height: 500px;
       // background-color: red;
       text-align: center;
       padding: 0 3px;
+
       .scroll {
         width: 100%;
         height: 100%;
       }
 
       .scroll_text {
-        height: 30px;
+        height: 70px;
         border-bottom: 1px solid #cccccc;
         margin: 5px 0;
       }
-      .active{
+
+      .active {
         border-left: 3px solid red;
         font-size: 20px;
         color: red;
+      }
+    }
+
+    // 右侧
+    .box_right {
+      height: 900px;
+      flex: 1;
+      text-align: center;
+padding: 20px;
+      .right_scroll{
+        height: 600px;
+      }
+      .box-con {
+        width: 100%;
+        height: 900px;
+        display: flex;
+        flex-wrap: wrap;
+        .title{
+          width: 100%;
+        }
+        .box_children{
+          .img{
+            width: 80px;
+            height: 80px;
+          }
+        }
       }
     }
   }

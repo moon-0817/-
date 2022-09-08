@@ -10,14 +10,29 @@ Page({
   data: {
     // 左侧数据
     boxLeft: [],
+    boxRight: [],
     leftIndex: 0
   },
-
+  // 点击左侧
   setIndex(e) {
     // console.log(e);
-    let {index} =e.currentTarget.dataset
+    let {
+      index
+    } = e.currentTarget.dataset
     this.setData({
-      leftIndex:index
+      leftIndex: index,
+      boxRight: this.data.boxLeft[e.currentTarget.dataset.index].children
+
+    })
+    // console.log(this.data.boxRight);
+    // console.log(index);
+  },
+  // 点击右侧
+  go(e) {
+    // console.log(e);
+    let cid = e.currentTarget.dataset.cat_id
+    wx.navigateTo({
+      url: '/pages/goods/index?cid=' + cid,
     })
   },
   /**
@@ -25,11 +40,13 @@ Page({
    */
   onLoad(options) {
     getcategories().then(res => {
-      console.log(res);
+      // console.log(res);
       this.setData({
         boxLeft: res.data.message,
+        boxRight: res.data.message[this.data.leftIndex].children
       })
     })
+
   },
 
   /**
